@@ -139,6 +139,7 @@ def clear_floor_map_from_0():
     for i in range(len(floor_map)):
         for j in range(len(floor_map[i])):
             if floor_map[i][j]==0:
+                floor_map[i][j]=' '
     
     
 def main():                                 # Define the main function
@@ -147,5 +148,37 @@ def main():                                 # Define the main function
         print("Floor map is empty....!")
     else:
         print("explanation of the map:  W - wall   /  E - employee  /  ' ' - empty space   /   X - best empty space to put a kitchen ")
-        
+        print("Given a building floor map:")
+        show_map(floor_map)                                              # call to show_map function
+        init_wall(floor_map, len(floor_map), len(floor_map[0]))          # call init_wall() function (row = len(floor_map) , col = len(floor_map[0]))
+        distancesArray = copyMatrix(floor_map)                           # copy floor map matrix to new
+        # loop -for- that write destination from all employee to empty space on floor and call function that sum all steps
+        for k in range(len(employee)):
+            curr_loc_x = employee[k][0]
+            curr_loc_y = employee[k][1]
+            arrEmployee.append(employee[k])
+            y = copyMatrix(floor_map)
+            init_weight(y, curr_loc_x, curr_loc_y, arrEmployee)     # call to init_weight function
+            distancesArray = (sum_value_matrix(distancesArray, y))  # call to sum_value_matrix function
+        # loop -for- change type of weight number from str to int
+        for i in range(len(distancesArray)):
+            for j in range(len(distancesArray[i])):
+                if distancesArray[i][j]=='W':
+                    continue
+                if distancesArray[i][j]=='E':
+                    continue
+                else:
+                    distancesArray[i][j]= int(distancesArray[i][j])
+
+        distance = (check_min_sum(distancesArray))                          # call to check_min_sum function
+        optional_location_of_kitchen(distancesArray, floor_map, distance)   # call to optional_location_of_kitchen
+        if len(optionalKitchenLocationIndex)>0:
+            print("The map of the best empty space to put a kitchen marked with 'X':")
+            clear_floor_map_from_0()
+            show_map(floor_map)
+            print("Indexes of the best empty space to put a kitchen:",optionalKitchenLocationIndex)
+        else:
+            print("floor plan does not allow some employees to reach some spaces")
+            
+            
 main()  # call to main function
