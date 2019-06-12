@@ -27,6 +27,27 @@ floor_map = [['W','W','W','W','W','W','W','W','W','W','W','W','W'],
         ['W','E',' ',' ',' ',' ','W','E',' ',' ',' ',' ','W'],
         ['W','W','W','W','W','W','W','W','W','W','W','W','W']]
         
+        
+        
+# function show the plan of kitchen in matrix n*m
+def show_map(floor_map):
+    print(np.matrix(floor_map))
+# function that init matrix n*m ( W==WALL / E==employee / 0==empty space). return: floor map in matrix
+def init_wall(floor_map, row, col):
+    for i in range(row):
+        for j in range(col):
+            if floor_map[i][j]=='W':
+                # floor_map[i][j] = -1
+                continue
+            elif floor_map[i][j]=='E':
+                employee.append([i,j])
+                continue
+            else:
+                floor_map[i][j] = 0
+    return floor_map
+    
+    
+    
 def main():                                 # Define the main function
     
     if len(floor_map)==0:
