@@ -45,7 +45,55 @@ def init_wall(floor_map, row, col):
             else:
                 floor_map[i][j] = 0
     return floor_map
+<<<<<<< HEAD
     
+=======
+# function init employee steps in matrix based on bfs algorithm. return: floor map with steps
+def init_weight(floor_map, curr_loc_x, curr_loc_y, arr):
+   while(arr):
+        value = floor_map[curr_loc_x][curr_loc_y]
+        if value=='E':
+            value = 0
+        # check all steps around
+        if floor_map[curr_loc_x][curr_loc_y+1]!= 'W':
+            if floor_map[curr_loc_x][curr_loc_y+1]!='E':
+                if floor_map[curr_loc_x][curr_loc_y+1]==0:
+                    arr.append([curr_loc_x,curr_loc_y+1])
+                    floor_map[curr_loc_x][curr_loc_y + 1] += value + 1
+        if floor_map[curr_loc_x+1][curr_loc_y] != 'W':
+            if floor_map[curr_loc_x+1][curr_loc_y] != 'E':
+                if floor_map[curr_loc_x+1][curr_loc_y] == 0:
+                    arr.append([curr_loc_x+1,curr_loc_y])
+                    floor_map[curr_loc_x+1][curr_loc_y] +=value + 1
+        if floor_map[curr_loc_x-1][curr_loc_y] != 'W':
+            if floor_map[curr_loc_x-1][curr_loc_y] != 'E':
+                if floor_map[curr_loc_x-1][curr_loc_y] == 0:
+                    arr.append([curr_loc_x-1,curr_loc_y])
+                    floor_map[curr_loc_x-1][curr_loc_y] += value + 1
+        if floor_map[curr_loc_x][curr_loc_y - 1] != 'W':
+            if floor_map[curr_loc_x][curr_loc_y - 1] != 'E':
+                if floor_map[curr_loc_x][curr_loc_y - 1] == 0:
+                    arr.append([curr_loc_x,curr_loc_y - 1])
+                    floor_map[curr_loc_x][curr_loc_y - 1] += value + 1
+
+        if len(arrEmployee)==0:
+            return floor_map
+        else:
+            del arrEmployee[0]
+            if len(arrEmployee)!=0:
+                curr_loc_x =arrEmployee[0][0]
+                curr_loc_y =arrEmployee[0][1]
+            else:
+                return floor_map
+# function copy matrix. return: matrix
+def copyMatrix(matrix):
+    newMatrix=[]
+    for i in range(len(matrix)):
+        newMatrix.append([])
+        for j in range(len(matrix[i])):
+            newMatrix[i].append(matrix[i][j])
+    return newMatrix
+>>>>>>> 9af0cf9... create function-copy matrix
     
     
 def main():                                 # Define the main function
