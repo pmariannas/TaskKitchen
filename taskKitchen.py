@@ -124,6 +124,21 @@ def check_min_sum(matrix):
             if minValue<answer:
                 answer = minValue
     return answer
+# function show optional location of kitchen (size of kitche 1*1)
+def optional_location_of_kitchen(distancesArray,floor_map, minDistance):
+
+    for i in range(len(distancesArray)):
+        for j in range(len(distancesArray[i])):
+            if distancesArray[i][j] == minDistance:
+                floor_map[i][j] = 'X'
+                optionalKitchenLocationIndex.append((i, j))
+            else:
+                continue
+    return floor_map
+def clear_floor_map_from_0():
+    for i in range(len(floor_map)):
+        for j in range(len(floor_map[i])):
+            if floor_map[i][j]==0:
     
     
 def main():                                 # Define the main function
