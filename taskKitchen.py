@@ -107,6 +107,23 @@ def sum_value_matrix(matrixA, matrixB):
                 y = matrixB[i][j]
                 newMatrix[i].append(x+y)
     return newMatrix
+# function check the minimal distances from all employees. return: minimal distance
+def check_min_sum(matrix):
+    answer=2147483647
+    for i in range(len(matrix)):
+        minValue = min(matrix[i])
+        if minValue=='W':
+            continue
+        elif minValue == 'E':
+            continue
+        elif minValue == 1:
+            continue
+        elif minValue == 0:
+            continue
+        elif minValue >1:
+            if minValue<answer:
+                answer = minValue
+    return answer
     
     
 def main():                                 # Define the main function
