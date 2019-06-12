@@ -45,9 +45,6 @@ def init_wall(floor_map, row, col):
             else:
                 floor_map[i][j] = 0
     return floor_map
-<<<<<<< HEAD
-    
-=======
 # function init employee steps in matrix based on bfs algorithm. return: floor map with steps
 def init_weight(floor_map, curr_loc_x, curr_loc_y, arr):
    while(arr):
@@ -93,7 +90,23 @@ def copyMatrix(matrix):
         for j in range(len(matrix[i])):
             newMatrix[i].append(matrix[i][j])
     return newMatrix
->>>>>>> 9af0cf9... create function-copy matrix
+#function sum all steps from all employee to empty space. return: matrix
+def sum_value_matrix(matrixA, matrixB):
+    newMatrix = []
+    for i in range(len(matrixA)):
+        newMatrix.append([])
+        for j in range(len(matrixA[i])):
+            if matrixA[i][j]=='W':
+                x = matrixA[i][j]
+                newMatrix[i].append(x)
+            elif matrixA[i][j]=='E':
+                x = matrixA[i][j]
+                newMatrix[i].append(x)
+            else:
+                x = matrixA[i][j]
+                y = matrixB[i][j]
+                newMatrix[i].append(x+y)
+    return newMatrix
     
     
 def main():                                 # Define the main function
